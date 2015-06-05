@@ -44,7 +44,7 @@ class WCC_API_Products {
 	 */
 	public function get_products( $filter = array() ) {
 		try {
-			return $this->client->products->get();
+			return $this->client->products->get()->products;
 		} catch (WC_API_Client_Exception $e) {
 			if ( $e instanceof WC_API_Client_HTTP_Exception ) {
 				return $e->get_response();
@@ -63,7 +63,7 @@ class WCC_API_Products {
 	public function get_product( $id ) {
 		$id = (int) $id;
 		try {
-			return $this->client->products->get( $id );
+			return $this->client->products->get( $id )->product;
 		} catch (WC_API_Client_Exception $e) {
 			if ( $e instanceof WC_API_Client_HTTP_Exception ) {
 				return $e->get_response();
