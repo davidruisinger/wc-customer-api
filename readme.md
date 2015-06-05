@@ -20,6 +20,7 @@ Paste those credentials into WooCommerce > Settings > WooCommerce Customer REST 
 * GET `/wcc-api`- index of the API
 
 * GET `/wcc-api/products`- get a list of products
+* GET `/wcc-api/products/<id>`- get a single product
 
 more to come soon...
 

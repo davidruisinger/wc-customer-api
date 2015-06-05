@@ -35,11 +35,17 @@ class WCC_API_Start {
    		// Available routes in the API
    		$api_info->routes = new stdClass();   		
 
-   		// Products
-   		$products_route = new stdClass();
-   		$products_route->accepts = array('GET');
-   		$products_route->url = get_bloginfo('url') . '/' . constant('WCC_API_BASE') . '/products';
-   		$api_info->routes->{"/products"} = $products_route;
+   		// Get Products
+   		$get_products_route = new stdClass();
+   		$get_products_route->accepts = array('GET');
+   		$get_products_route->url = get_bloginfo('url') . '/' . constant('WCC_API_BASE') . '/products';
+   		$api_info->routes->{"/products"} = $get_products_route;
+
+   		// Get Product
+   		$get_product_route = new stdClass();
+   		$get_product_route->accepts = array('GET');
+   		$get_product_route->url = get_bloginfo('url') . '/' . constant('WCC_API_BASE') . '/products/<id>';
+   		$api_info->routes->{"/products/<id>"} = $get_product_route;
 
 		return $api_info;
 	}
