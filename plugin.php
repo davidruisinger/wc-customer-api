@@ -21,6 +21,7 @@ require_once( dirname( __FILE__ ) . '/lib/woocommerce-api.php' );
 
 include_once( dirname( __FILE__ ) . '/lib/endpoints/class-wcc-api-start.php' );
 include_once( dirname( __FILE__ ) . '/lib/endpoints/class-wcc-api-products.php' );
+include_once( dirname( __FILE__ ) . '/lib/endpoints/class-wcc-api-orders.php' );
 
 
 /**
@@ -86,11 +87,15 @@ function wcc_api_endpoints( $server ) {
 
 	// Start
 	$wcc_api_start = new WCC_API_Start();
-	add_filter( 'json_endpoints', array( $wcc_api_start, 'register_routes' ) );
+	add_filter( 'json_endpoints', array( $wcc_api_start, 'register_routes' ), 0 );
 
 	// Products
-	$wcc_api_product = new WCC_API_Products( $client );
-	add_filter( 'json_endpoints', array( $wcc_api_product, 'register_routes' ) );
+	$wcc_api_products = new WCC_API_Products( $client );
+	add_filter( 'json_endpoints', array( $wcc_api_products, 'register_routes' ), 0 );
+
+	// Orders
+	$wcc_api_orders = new WCC_API_Orders( $client );
+	add_filter( 'json_endpoints', array( $wcc_api_orders, 'register_routes' ), 0 );
 }
 add_action( 'wp_json_server_before_serve', 'wcc_api_endpoints' );
 

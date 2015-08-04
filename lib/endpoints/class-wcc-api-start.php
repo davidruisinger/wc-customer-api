@@ -11,7 +11,7 @@ class WCC_API_Start {
 		$start_route = array(
 			// Start endpoints
 			constant('WCC_API_INTERNAL_PREFIX') => array(
-				array( array( $this, 'get_start'), WP_JSON_Server::READABLE ),
+				array( array( $this, 'get_start'), WP_JSON_Server::READABLE | WP_JSON_Server::HIDDEN_ENDPOINT ),
 			),
 		);
 
